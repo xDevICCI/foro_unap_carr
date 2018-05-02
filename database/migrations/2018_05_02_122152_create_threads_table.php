@@ -19,6 +19,7 @@ class CreateThreadsTable extends Migration
             $table->unsignedInteger('channel_id');
             $table->string('title');
             $table->string('content');
+            $table->boolean('is_published')->default(0);
             $table->timestamps();
         });
     }
