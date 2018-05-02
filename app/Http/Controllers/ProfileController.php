@@ -3,81 +3,72 @@
 namespace App\Http\Controllers;
 
 use App\Profile;
+use App\User;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class ProfileController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
     public function index()
     {
         //
     }
 
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
     public function create()
     {
         //
     }
 
-    /**
-     * Store a newly created resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
-     */
     public function store(Request $request)
     {
         //
     }
 
-    /**
-     * Display the specified resource.
-     *
-     * @param  \App\Profile  $profile
-     * @return \Illuminate\Http\Response
-     */
-    public function show(Profile $profile)
+    public function show()
     {
-        //
+        $user = Auth::user();
+        return view('profile.profile')->with('user',$user);
     }
 
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  \App\Profile  $profile
-     * @return \Illuminate\Http\Response
-     */
     public function edit(Profile $profile)
     {
         //
     }
 
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Profile  $profile
-     * @return \Illuminate\Http\Response
-     */
-    public function update(Request $request, Profile $profile)
+    public function update()
     {
-        //
+
+        $this->validate(\request(),
+            [
+                'name'=>'required',
+                'email'=>'required',
+                'description'=>'required|max:250',
+                'avatar'=>'required|image|dimensions:min_width=200,min_height=200|mimes:png',
+            ]);
+
+        $user = Auth::user();
+
+        if (\request('avatar')){
+            $image = \request('avatar');
+            $image_new_name = time().$image->getClientOriginalName();
+            $image->move('uploads/users/',$image_new_name);
+            $user->profile->avatar = '/uploads/users/'.$image_new_name;
+            $user->profile->save();
+        }
+
+            $user->name = \request('name');
+            $user->email = \request('email');
+            $user->profile->description = \request('description');
+            $user->profile->save();
+            $user->save();
+
+        $notification = array(
+            'message' => 'profile has been updated !!',
+            'alert-type' => 'success'
+        );
+        return redirect()->back()->with($notification);
     }
 
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  \App\Profile  $profile
-     * @return \Illuminate\Http\Response
-     */
     public function destroy(Profile $profile)
     {
         //

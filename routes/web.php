@@ -17,4 +17,13 @@ Route::get('/', function () {
 
 Auth::routes();
 
-Route::get('/home', 'HomeController@index')->name('home');
+Route::get('/home', 'DashController@index')->name('home');
+Route::get('/my/profile','ProfileController@show')->name('my_profile');
+Route::patch('/update/my/profile/','ProfileController@update')->name('update_my_profile');
+
+
+
+
+
+
+
