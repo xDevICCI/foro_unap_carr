@@ -20,9 +20,9 @@ Auth::routes();
 Route::get('/home', 'DashController@index')->name('home');
 Route::get('/my/profile','ProfileController@show')->name('my_profile');
 Route::patch('/update/my/profile/','ProfileController@update')->name('update_my_profile');
-
-
-
+Route::get('/all/users/','UsersController@index')->name('show_all_users');
+Route::get('/make/admin/{user}','UsersController@makeadmin')->name('make_admin');
+Route::get('/make/subscriber/{user}','Userscontroller@makesubscriber')->name('make_subsc');
 
 
 

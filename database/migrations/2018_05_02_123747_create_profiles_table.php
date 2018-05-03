@@ -18,6 +18,7 @@ class CreateProfilesTable extends Migration
             $table->unsignedInteger('user_id');
             $table->string('avatar');
             $table->string('description');
+            $table->ipAddress('ip');
             $table->timestamps();
         });
     }

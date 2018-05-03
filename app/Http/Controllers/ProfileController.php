@@ -46,6 +46,7 @@ class ProfileController extends Controller
                 'avatar'=>'required|image|dimensions:min_width=200,min_height=200|mimes:png',
             ]);
 
+
         $user = Auth::user();
 
         if (\request('avatar')){
@@ -67,6 +68,8 @@ class ProfileController extends Controller
             'alert-type' => 'success'
         );
         return redirect()->back()->with($notification);
+
+
     }
 
     public function destroy(Profile $profile)
