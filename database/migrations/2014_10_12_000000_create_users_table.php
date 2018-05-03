@@ -20,6 +20,7 @@ class CreateUsersTable extends Migration
             $table->string('password');
             $table->boolean('role')->default(0);
             $table->bigInteger('points')->default(5);
+            $table->boolean('verifed')->default(false);
             $table->rememberToken();
             $table->timestamps();
         });

@@ -2,9 +2,9 @@
 @extends('layouts.app')
 
 @section('content')
-    <div class="container shadow-lg rounded mb-5 bg-white mt-2 pt-4 pb-5 pl-2 pr-2">
+    <div class="container ">
         <div class="row justify-content-center">
-            <div class="col-md-8 mb-2">
+            <div class="col-md-8 mb-2  pt-4 pb-5 pl-2 pr-2 bg-white shadow-lg">
                 <div class="table-responsive">
                     <table class="table">
                         <thead>
@@ -33,7 +33,13 @@
                             </td>
 
                             <td>
-                                <a href="#" class="badge badge-danger">Delete</a>
+                                <form action="{{ route('delete_user',$user->id) }}" method="post">
+                                    @csrf
+                                    @method('delete')
+                                    <button type="submit" onclick="return confirm('Are you sure you want to delete ? ');" class="btn btn-outline-danger btn-sm"><i class="fas fa-minus-circle"></i>
+                                         trash
+                                    </button>
+                                </form>
                             </td>
                         </tr>
                         @endforeach
@@ -43,7 +49,11 @@
 
             </div>
             <div class="col-md-4">
-                @include('inc.sidebar')
+
+                <div class="shadow-lg">
+                    @include('inc.sidebar')
+
+                </div>
             </div>
         </div>
     </div>
