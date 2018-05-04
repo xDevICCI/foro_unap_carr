@@ -6,11 +6,6 @@ use Illuminate\Database\Migrations\Migration;
 
 class CreateRepliesTable extends Migration
 {
-    /**
-     * Run the migrations.
-     *
-     * @return void
-     */
     public function up()
     {
         Schema::create('replies', function (Blueprint $table) {
@@ -19,15 +14,11 @@ class CreateRepliesTable extends Migration
             $table->boolean('best_answer')->default(0);
             $table->unsignedInteger('user_id');
             $table->unsignedInteger('thread_id');
+            $table->string('title');
             $table->timestamps();
         });
     }
 
-    /**
-     * Reverse the migrations.
-     *
-     * @return void
-     */
     public function down()
     {
         Schema::dropIfExists('replies');

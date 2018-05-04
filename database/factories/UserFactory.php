@@ -19,12 +19,21 @@ $factory->define(App\Channel::class, function (Faker $faker) {
 });
 
 $factory->define(App\Thread::class, function (Faker $faker) {
-   $title = $faker->sentence;
+            $title = $faker->sentence;
     return [
         'title' => $title,
         'content'=>$faker->paragraph,
         'slug'=>str_slug($title,'-'),
         'channel_id'=>function(){return factory('App\Channel')->create()->id; },
+        'user_id'=>function(){return factory('App\User')->create()->id; }
+    ];
+});
+
+$factory->define(App\Reply::class, function (Faker $faker) {
+    return [
+        'title'=>$faker->sentence,
+        'content'=>$faker->paragraph,
+        'thread_id'=>function(){return factory('App\Thread')->create()->id; },
         'user_id'=>function(){return factory('App\User')->create()->id; }
     ];
 });

@@ -31,7 +31,6 @@ class User extends Authenticatable
         return $this->hasOne(Profile::class);
     }
 
-
     public function threads(){
         return $this->hasMany(Thread::class);
     }
