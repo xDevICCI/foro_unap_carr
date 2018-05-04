@@ -13,12 +13,12 @@
         </li>
         <li class="list-group-item d-flex justify-content-between align-items-center">
             <a href="{{ route('show_all_users') }}">all users</a>
-            <span class="badge badge-warning badge-pill">{{ App\User::all()->count() }}</span>
+            <span class="badge badge-success badge-pill">{{ App\User::all()->count() }}</span>
         </li>
     </div>
     <li class="list-group-item d-flex justify-content-between align-items-center">
-        Channels
-        <span class="badge badge-warning badge-pill">3</span>
+            <a href="{{ route('create_channel') }}">Channels</a>
+    <span class="badge badge-danger badge-pill">{{ App\Channel::all()->count() }}</span>
     </li>
     <li class="list-group-item d-flex justify-content-between align-items-center">
         Threads

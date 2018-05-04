@@ -27,3 +27,8 @@ Route::delete('/delete/user/{user}','Userscontroller@destroy')->name('delete_use
 Route::get('/new/user','Userscontroller@create')->name('new_user_create');
 Route::patch('/new/user/store','Userscontroller@store')->name('store_new_user');
 Route::get('/user/verify/{token}','UsersController@verifyUser');
+Route::get('/create/channel','ChannelController@create')->name('create_channel');
+Route::delete('/delete/channel/{channel}','ChannelController@destroy')->name('delete_channel');
+Route::get('/edit/channel/{channel}/edit','ChannelController@edit')->name('edit_channel');
+Route::put('/update/channel/{channel}','ChannelController@update')->name('update_channel');
+Route::post('/new/channel','ChannelController@store')->name('new_channel');

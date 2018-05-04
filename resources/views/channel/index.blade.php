@@ -1,0 +1,72 @@
+@extends('layouts.app')
+
+@section('content')
+<div class="container">
+<div class="row">
+<div class="col-md-8 bg-white pt-4 pb-4 shadow-lg">
+    @include('inc.errors')
+<div class="form">
+<form action="{{ route('new_channel') }}" method="post">
+    @csrf
+<div class="row">
+<div class="col-sm-8">
+    <div class="form-group">
+            <input type="text" name="title" class="form-control" placeholder="Channel Title">
+        </div>
+</div>
+<div class="col-sm-4">
+<button  class="btn btn-outline-danger" type="submit">add channel</button>
+</div>
+</div>
+</form>
+</div>
+<div class="col-md-12">
+<div class="table-responsive">
+    <table class="table">
+    <thead>
+    <tr>
+        <th scope="col">#</th>
+        <th scope="col">Channel</th>
+        <th scope="col">Edit</th>
+        <th scope="col">Delete</th>
+    </tr>
+    </thead>
+    <tbody>
+        @foreach(App\Channel::paginate(5) as $channel)
+        <tr>
+            <td>{{ $channel->id}}</td>
+            <td>
+                    <div class="form-group col-sm-10">
+                        <input type="text" name="title" value="{{ $channel->title }}" disabled class="form-control">
+                    </div>
+                    <td>
+                    <a class="badge badge-success" href="{{ route('edit_channel',$channel->id) }}">edit</a>
+                    </td>
+                </form>
+            </td>
+
+            <td>
+            <form action="{{ route('delete_channel',$channel->id) }}" method="post">
+                    @csrf
+                    @method('delete')
+                        <button onclick="return confirm('are you sure to delete');" class="badge badge-danger" type="submit">trash</button>
+                </form>
+            </td>
+        </tr>
+        @endforeach
+        </tbody>
+    </table>
+    </div>
+</div>
+</div>
+<div class="col-md-4 ">
+<div class=" shadow-lg">
+@include('inc.sidebar')
+</div>
+</div>
+</div>
+</div>
+@endsection
+
+
+

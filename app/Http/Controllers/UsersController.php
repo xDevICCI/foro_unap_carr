@@ -91,6 +91,7 @@ class UsersController extends Controller
             return redirect()->back()->with($notification);
         }
         $user->profile()->delete();
+        $user->verifyuser()->delete();
         $user->delete();
 
         $notification = array(
@@ -154,7 +155,7 @@ class UsersController extends Controller
         if(isset($verifyUser) ){
         $user = $verifyUser->user;
    
-        if(!$user->verified) {
+        if($user->verified == false) {
         $verifyUser->user->verifed = 1;
         $verifyUser->user->save();
         $notification = array(

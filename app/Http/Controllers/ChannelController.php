@@ -7,79 +7,53 @@ use Illuminate\Http\Request;
 
 class ChannelController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
     public function index()
     {
         //
     }
 
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
     public function create()
     {
-        //
+        return view('channel.index');
     }
 
-    /**
-     * Store a newly created resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
-     */
     public function store(Request $request)
     {
-        //
+        $this->validate($request,['title'=>'required']);
+        Channel::create([
+            'title'=>request('title'),
+            'user_id'=>\Auth::user()->id,
+        ]);
+        $notification = ['message'=>'new channel has been created','alert-type'=>'success'];
+        return redirect()->back()->with($notification);  
     }
 
-    /**
-     * Display the specified resource.
-     *
-     * @param  \App\Channel  $channel
-     * @return \Illuminate\Http\Response
-     */
     public function show(Channel $channel)
     {
         //
     }
 
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  \App\Channel  $channel
-     * @return \Illuminate\Http\Response
-     */
     public function edit(Channel $channel)
     {
-        //
+        return view('channel.edit')->with('channel',$channel);
     }
 
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Channel  $channel
-     * @return \Illuminate\Http\Response
-     */
-    public function update(Request $request, Channel $channel)
+    public function update(Request $request , Channel $channel)
     {
-        //
+         $this->validate($request,['title'=>'required']);
+
+         $channel->title = $request->title;
+         $channel->user_id = \Auth::user()->id;
+         $channel->save();
+
+         $notification = ['message'=>'channel updated ','alert-type'=>'success'];
+         return redirect()->route('create_channel')->with($notification);
     }
 
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  \App\Channel  $channel
-     * @return \Illuminate\Http\Response
-     */
     public function destroy(Channel $channel)
     {
-        //
+        $channel->delete();
+        $notification = ['message'=>'channel has been deleted','alert-type'=>'success'];
+        return redirect()->back()->with($notification);  
     }
 }

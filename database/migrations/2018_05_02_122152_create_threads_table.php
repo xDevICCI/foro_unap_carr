@@ -20,6 +20,7 @@ class CreateThreadsTable extends Migration
             $table->string('title');
             $table->string('content');
             $table->boolean('is_published')->default(0);
+            $table->string('slug');
             $table->timestamps();
         });
     }

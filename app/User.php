@@ -31,9 +31,6 @@ class User extends Authenticatable
         return $this->hasOne(Profile::class);
     }
 
-    public function channels(){
-        return $this->hasMany(Channel::class);
-    }
 
     public function threads(){
         return $this->hasMany(Thread::class);

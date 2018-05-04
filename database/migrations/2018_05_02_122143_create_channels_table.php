@@ -17,7 +17,6 @@ class CreateChannelsTable extends Migration
             $table->increments('id');
             $table->string('title');
             $table->boolean('is_published')->default(0);
-            $table->unsignedInteger('user_id');
             $table->timestamps();
         });
     }
