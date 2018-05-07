@@ -9,6 +9,10 @@ use Illuminate\Support\Facades\Auth;
 
 class ThreadController extends Controller
 {
+    public function __construct(){
+        $this->middleware('auth')->except('show');
+    }
+
     public function index()
     {
         return view('thread.index');
@@ -29,6 +33,8 @@ class ThreadController extends Controller
         $thread->channel_id = request('channel_id');
         $thread->user_id = Auth::user()->id;
         $thread->content=request('content');
+        $thread->user->points += 10;
+        $thread->user->save();
         $thread->save();
 
 
@@ -40,12 +46,18 @@ class ThreadController extends Controller
     public function show($slug)
     {
         $thread = Thread::where('slug',$slug)->first();
-        return view('thread.show')->with('thread',$thread);
+        $bestanswer = $thread->replies()->where('best_answer',1)->first();
+        return view('thread.show')->with('thread',$thread)->with('bestanswer',$bestanswer);
     }
 
     public function edit(Thread $thread)
     {
-        return view('thread.edit')->with('thread',$thread);
+        if (Auth::id() == $thread->user_id) {
+            return view('thread.edit')->with('thread', $thread);
+        }
+        else{
+            return redirect()->route('forum');
+        }
     }
 
     public function update(Request $request, Thread $thread)
@@ -55,26 +67,43 @@ class ThreadController extends Controller
                 'title'=>'required',
                 'content'=>'required'
             ]);
-        $title = request('title');
-        $thread->slug = str_slug($title,'-');
-        $thread->title = $title;
-        $thread->channel_id = request('channel_id');
-        $thread->user_id = Auth::user()->id;
-        $thread->content=request('content');
-        $thread->save();
 
+        if (Auth::id() == $thread->user_id){
+            $title = request('title');
+            $thread->slug = str_slug($title,'-');
+            $thread->title = $title;
+            $thread->channel_id = request('channel_id');
+            $thread->user_id = Auth::user()->id;
+            $thread->content=request('content');
+            $thread->save();
+            $notification = ['message'=> '"'.$thread->title.'"'.' has been updated','alert-type'=>'success'];
+            return redirect()->route('show_thread_id',$thread->slug)->with('thread',$thread)->with($notification);
+        }
+        else{
+            $notification = ['message'=>'you cant do that ','alert-type'=>'error'];
+            return redirect()->back()->with($notification);
 
-        $notification = ['message'=> '"'.$thread->title.'"'.' has been updated','alert-type'=>'success'];
+        }
 
-        return redirect()->route('show_thread_id',$thread->slug)->with('thread',$thread)->with($notification);
     }
 
     public function destroy(Thread $thread)
     {
-        $thread->delete();
+        if (Auth::id() == $thread->user_id){
+            $thread->delete();
+            $notification = ['message' => '"' . $thread->title . '"' . ' has been deleted', 'alert-type' => 'success'];
+            return redirect()->back()->with($notification);
+       }
 
-        $notification = ['message'=> '"'.$thread->title.'"'.' has been deleted','alert-type'=>'warning'];
+        if ( Auth::user()->role == true) {
+            $thread->delete();
+            $notification = ['message' => '"' . $thread->title . '"' . ' has been deleted', 'alert-type' => 'success'];
+            return redirect()->back()->with($notification);
 
-        return redirect()->back()->with($notification);
+        }else {
+            $notification = ['message' => ' you cant delete ', 'alert-type' => 'error'];
+            return redirect()->back()->with($notification);
+        }
+
     }
 }

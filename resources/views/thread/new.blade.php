@@ -27,7 +27,7 @@
                     </div>
 
                       <div class="col-md-12">
-                          <textarea name="content"  class="form-control" id="" cols="30" rows="10"></textarea>
+                          <textarea name="content"  class="form-control __editor" id="" cols="30" rows="10"></textarea>
                       </div>
                       <button class="btn btn-danger mt-3 ml-3" type="submit">submit</button>
                 </div>

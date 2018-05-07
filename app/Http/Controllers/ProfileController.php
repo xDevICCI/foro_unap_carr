@@ -9,6 +9,10 @@ use Illuminate\Support\Facades\Auth;
 
 class ProfileController extends Controller
 {
+    public function __construct(){
+        $this->middleware('auth');
+    }
+
     public function index()
     {
         //
@@ -35,7 +39,7 @@ class ProfileController extends Controller
         //
     }
 
-    public function update()
+    public function update(Request $request)
     {
 
         $this->validate(\request(),
@@ -44,6 +48,7 @@ class ProfileController extends Controller
                 'email'=>'required',
                 'description'=>'required|max:250',
                 'avatar'=>'required|image|dimensions:min_width=200,min_height=200|mimes:png',
+                'password'=>'confirmed'
             ]);
 
 
@@ -56,6 +61,15 @@ class ProfileController extends Controller
             $user->profile->avatar = '/uploads/users/'.$image_new_name;
             $user->profile->save();
         }
+
+        $current_password = $user->password;
+            
+        if(\Hash::check($request->current_password,$current_password)){
+                if($request->has('password')){
+                    $user->password = bcrypt($request->password);
+                    $user->save();
+                }
+            }
 
             $user->name = \request('name');
             $user->email = \request('email');

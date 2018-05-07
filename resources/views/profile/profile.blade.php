@@ -60,6 +60,34 @@
                     <div class="invalid-feedback">Example invalid custom file feedback</div>
                 </div>
 
+                <div class="row">
+                    <div class="col-sm-6">
+                        <div class="form-group">
+                            <label for="">current password</label>
+                            <input type="text" class="form-control" name="current_password">
+                        </div>
+                    </div>
+                    <div class="col-sm-6">
+                            <div class="form-group">
+                                <label for="">new password</label>
+                                <input type="text" class="form-control" name="password">
+                            </div>
+                        </div>
+                </div>
+                <div class="row">
+                        <div class="col-sm-6">
+                              
+                        </div>  
+                        <div class="col-sm-6">
+                                <div class="form-group">
+                                    <label for="">confirm new  password</label>
+                                    <input type="text" class="form-control" name="password_confirmation">
+                                </div>
+                            </div>
+                        
+                    </div>
+
+
 
                 <button class="btn btn-outline-primary mb-3" type="submit">update</button>
 

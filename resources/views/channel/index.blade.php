@@ -27,8 +27,10 @@
     <tr>
         <th scope="col">#</th>
         <th scope="col">Channel</th>
+        @if(Auth::user()->role)
         <th scope="col">Edit</th>
         <th scope="col">Delete</th>
+        @endif
     </tr>
     </thead>
     <tbody>
@@ -39,19 +41,23 @@
                     <div class="form-group col-sm-10">
                         <input type="text" name="title" value="{{ $channel->title }}" disabled class="form-control">
                     </div>
+                    @if(Auth::user()->role)
                     <td>
                     <a class="badge badge-success" href="{{ route('edit_channel',$channel->id) }}">edit</a>
                     </td>
+                    @endif
                 </form>
             </td>
-
+            @if(Auth::user()->role)
             <td>
-            <form action="{{ route('delete_channel',$channel->id) }}" method="post">
+                <form action="{{ route('delete_channel',$channel->id) }}" method="post">
                     @csrf
                     @method('delete')
                         <button onclick="return confirm('are you sure to delete');" class="badge badge-danger" type="submit">trash</button>
                 </form>
             </td>
+            @endif
+
         </tr>
         @endforeach
         </tbody>

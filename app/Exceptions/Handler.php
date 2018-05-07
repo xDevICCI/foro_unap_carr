@@ -48,6 +48,12 @@ class Handler extends ExceptionHandler
      */
     public function render($request, Exception $exception)
     {
+//        i change this to this temporary to redirect to
+//        home page temporary until i make my error page and
+//        redirect to it  with :                               return response()->view('errors.custom');
+
         return parent::render($request, $exception);
+
+//          return response()->redirectTo('/');
     }
 }

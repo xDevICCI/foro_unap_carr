@@ -11,10 +11,11 @@ use Illuminate\Support\Facades\Mail;
 use App\VerifyUser;
 class UsersController extends Controller
 {
-    public function __construct()
-    {
-        $this->middleware(['auth','admin']);
+ 
+    public function __construct(){
+        $this->middleware('auth');
     }
+
 
     public function index()
     {
@@ -148,35 +149,35 @@ class UsersController extends Controller
 
 
 
-    public function verifyUser($token)
-    {
-        $verifyUser = VerifyUser::where('token', $token)->first();
-    
-        if(isset($verifyUser) ){
-        $user = $verifyUser->user;
-   
-        if($user->verified == false) {
-        $verifyUser->user->verifed = 1;
-        $verifyUser->user->save();
-        $notification = array(
-        'message' => $user->name . ' Your e-mail is verified. You can now login. !!',
-        'alert-type' => 'success'
-    );
-    }else{
-        $notification = array(
-        'message' => $user->name . ' Your e-mail is already verified. You can now login. !!',
-        'alert-type' => 'warning'
-    );
-    }
-    }else{
-        $notification = array(
-            'message' => $user->name . ' your email not verified !!',
-            'alert-type' => 'error'
-        );
-        return redirect('/login')->with($notification);
-    }
-    return redirect('/login')->with($notification);
-    }
+//    public function verifyUser($token)
+//    {
+//        $verifyUser = VerifyUser::where('token', $token)->first();
+//
+//        if(isset($verifyUser) ){
+//        $user = $verifyUser->user;
+//
+//        if($user->verified == false) {
+//        $verifyUser->user->verifed = 1;
+//        $verifyUser->user->save();
+//        $notification = array(
+//        'message' => $user->name . ' Your e-mail is verified. You can now login. !!',
+//        'alert-type' => 'success'
+//    );
+//    }else{
+//        $notification = array(
+//        'message' => $user->name . ' Your e-mail is already verified. You can now login. !!',
+//        'alert-type' => 'warning'
+//    );
+//    }
+//    }else{
+//        $notification = array(
+//            'message' => $user->name . ' your email not verified !!',
+//            'alert-type' => 'error'
+//        );
+//        return redirect('/login')->with($notification);
+//    }
+//    return redirect('/login')->with($notification);
+//    }
  
 
 }

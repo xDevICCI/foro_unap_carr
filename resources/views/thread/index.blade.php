@@ -23,9 +23,17 @@
         <td>{{ $thread->title }}</td>
 
         <td>{{ $thread->channel->title }}</td>
-                <td> <a href="{{ route('edit_thread',$thread->id) }}" class="btn btn-outline-success btn-sm"><i class="fas fa-minus-circle"></i>edit</a></td>
-                <td> <a href="{{ route('show_thread_id',$thread->slug) }}" class="btn btn-outline-primary btn-sm"><i class="fas fa-minus-circle"></i>show</a></td>
+        
+                <td> 
+                                @if(Auth::id() == $thread->user_id || Auth::user()->role)
+
+                        <a href="{{ route('edit_thread',$thread->id) }}" class="btn btn-outline-success btn-sm">edit</a>
+                        @endif
+
+                </td>
+                <td> <a href="{{ route('show_thread_id',$thread->slug) }}" class="btn btn-outline-primary btn-sm">show</a></td>
         <td>
+    @if(Auth::id() == $thread->user_id || Auth::user()->role)
         <form action="{{ route('delete_thread',$thread->id) }}" method="post">
         @csrf
         @method('delete')
@@ -35,6 +43,8 @@
             trash
         </button>
         </form>
+   @endif
+
         </td>
         </tr>
         @endforeach

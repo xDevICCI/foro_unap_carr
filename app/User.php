@@ -43,4 +43,7 @@ class User extends Authenticatable
         return $this->hasOne(Verifyuser::class);
     }
 
+    public function watchers(){
+        return $this->hasMany(Watcher::class);
+    }
 }
