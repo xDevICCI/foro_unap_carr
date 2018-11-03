@@ -11,7 +11,7 @@ use Illuminate\Support\Facades\Mail;
 use App\VerifyUser;
 class UsersController extends Controller
 {
- 
+
     public function __construct(){
         $this->middleware('auth');
     }
@@ -178,6 +178,6 @@ class UsersController extends Controller
 //    }
 //    return redirect('/login')->with($notification);
 //    }
- 
+
 
 }

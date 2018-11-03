@@ -13,7 +13,7 @@ return [
     |
     */
 
-    'name' => env('APP_NAME', 'ForuProblems'),
+    'name' => env('APP_NAME', 'ForoDiscusiones'),
 
     /*
     |--------------------------------------------------------------------------
@@ -209,6 +209,7 @@ return [
         'Validator' => Illuminate\Support\Facades\Validator::class,
         'View' => Illuminate\Support\Facades\View::class,
         'Markdown' => GrahamCampbell\Markdown\Facades\Markdown::class,
+        'Input' => Illuminate\Support\Facades\Input::class,
 
     ],
 

@@ -7,8 +7,9 @@
                 <div class="card shadow-lg">
                     <div class="card-header bg-dark text-white d-flex">
                         <div class="">
-                        Posted By : {{ $thread->user->name }} ( {{ $thread->user->points }} <i class="fas fa-dollar-sign"></i> )
-                        </div>
+                        Iniciado por : {{ $thread->user->name }}
+                        <br>
+                        Asignatura : {{ $thread->channel->title}}</div>
                         <div class="ml-auto">
 
 
@@ -21,7 +22,7 @@
                                 <div class="card text-white bg-info mb-3">
                                     <div class="card-body">
                                         <h5 class="card-title">
-                                            <span style="text-decoration-line: underline">Best Answer By :</span> {{ $bestanswer->user->name }}
+                                            <span style="text-decoration-line: underline">Mejor respuesta por :</span> {{ $bestanswer->user->name }}
                                             ( {{ $bestanswer->user->points }} <i class="fas fa-dollar-sign"></i> )
                                         </h5>
 
@@ -65,7 +66,7 @@
                        @if(!$bestanswer)
                        <form action="{{ route('make_best_answer',$reply->id) }}" method="post">
                            @csrf
-                           <button type="submit" class="btn btn-info btn-sm">mark as best answer</button>
+                           <button type="submit" class="btn btn-info btn-sm">Like como mejor respuesta</button>
                        </form>
 
                        @endif
@@ -96,7 +97,7 @@
                                 </div>
                             </div>
                             <div class="col-md-2">
-                                <button class="btn btn-outline-primary btn-block" type="submit">reply</button>
+                                <button class="btn btn-outline-primary btn-block" type="submit">Seguir</button>
                             </div>
 
                         </div>
@@ -104,7 +105,7 @@
                         <div class="row pt-4 pb-4 pl-1 pr-1">
                             <div class="col-md-12">
                                 <div class="form-group">
-                                    <textarea name="content" class="form-control" id="" cols="30" rows="10" placeholder="what your solution..."></textarea>
+                                    <textarea name="content" class="form-control" id="" cols="30" rows="10" placeholder="Tu solución..."></textarea>
                                 </div>
                             </div>
 
@@ -115,7 +116,7 @@
 @endauth
 @guest
 <div class="bg-white pt-4 pb-4 pl-3 pr-3 shadow-lg">
-    <h5 class="text-center">please <a href="{{ route('login')}}">login</a> or <a href="{{route('register')}}">register</a>to leave a reply</h5>
+    <h5 class="text-center">Por favor <a href="{{ route('login')}}">, inicia sesión</a> o <a href="{{route('register')}}">Registrate</a></h5>
 </div>
 @endguest
             </div>

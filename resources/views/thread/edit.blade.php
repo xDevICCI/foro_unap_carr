@@ -35,7 +35,7 @@
                             <div class="col-md-12">
                                 <textarea name="content"  class="form-control" id="" cols="30" rows="10">{{ $thread->content }}</textarea>
                             </div>
-                            <button class="btn btn-outline-info mt-3 ml-3" type="submit">update</button>
+                            <button class="btn btn-outline-info mt-3 ml-3" type="submit">Actualizar</button>
                         </div>
                         {{ Form::close() }}
                     </div>

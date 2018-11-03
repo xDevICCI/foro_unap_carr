@@ -11,11 +11,11 @@
 <div class="row">
 <div class="col-sm-8">
     <div class="form-group">
-            <input type="text" name="title" class="form-control" placeholder="Channel Title">
+            <input type="text" name="title" class="form-control" placeholder="Título de la asignatura">
         </div>
 </div>
 <div class="col-sm-4">
-<button  class="btn btn-outline-danger" type="submit">add channel</button>
+<button  class="btn btn-outline-danger" type="submit">Agregar categoría</button>
 </div>
 </div>
 </form>
@@ -26,10 +26,10 @@
     <thead>
     <tr>
         <th scope="col">#</th>
-        <th scope="col">Channel</th>
+        <th scope="col">Asignatura</th>
         @if(Auth::user()->role)
-        <th scope="col">Edit</th>
-        <th scope="col">Delete</th>
+        <th scope="col">Editar</th>
+        <th scope="col">Borrar</th>
         @endif
     </tr>
     </thead>
@@ -43,7 +43,7 @@
                     </div>
                     @if(Auth::user()->role)
                     <td>
-                    <a class="badge badge-success" href="{{ route('edit_channel',$channel->id) }}">edit</a>
+                    <a class="badge badge-success" href="{{ route('edit_channel',$channel->id) }}">editar</a>
                     </td>
                     @endif
                 </form>
@@ -53,7 +53,7 @@
                 <form action="{{ route('delete_channel',$channel->id) }}" method="post">
                     @csrf
                     @method('delete')
-                        <button onclick="return confirm('are you sure to delete');" class="badge badge-danger" type="submit">trash</button>
+                        <button onclick="return confirm('Estás seguro que quieres eliminar?');" class="badge badge-danger" type="submit">Basura</button>
                 </form>
             </td>
             @endif
@@ -73,6 +73,3 @@
 </div>
 </div>
 @endsection
-
-
-

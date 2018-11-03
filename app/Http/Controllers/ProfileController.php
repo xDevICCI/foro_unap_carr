@@ -63,7 +63,7 @@ class ProfileController extends Controller
         }
 
         $current_password = $user->password;
-            
+
         if(\Hash::check($request->current_password,$current_password)){
                 if($request->has('password')){
                     $user->password = bcrypt($request->password);
@@ -78,7 +78,7 @@ class ProfileController extends Controller
             $user->save();
 
         $notification = array(
-            'message' => 'profile has been updated !!',
+            'message' => 'Perfil Actualizado !!',
             'alert-type' => 'success'
         );
         return redirect()->back()->with($notification);

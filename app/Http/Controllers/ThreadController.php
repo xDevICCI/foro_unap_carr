@@ -6,6 +6,10 @@ use App\Http\Requests\ThreadRequest;
 use App\Thread;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use App\Comments;
+use Illuminate\Support\Facades\Input;
+
+use Response;
 
 class ThreadController extends Controller
 {
@@ -31,6 +35,7 @@ class ThreadController extends Controller
         $thread->slug = str_slug($title,'-');
         $thread->title = $title;
         $thread->channel_id = request('channel_id');
+        $thread->title = request('title');
         $thread->user_id = Auth::user()->id;
         $thread->content=request('content');
         $thread->user->points += 10;
@@ -106,4 +111,6 @@ class ThreadController extends Controller
         }
 
     }
+
+
 }

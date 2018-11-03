@@ -29,7 +29,7 @@ class ChannelController extends Controller
             'user_id'=>\Auth::user()->id,
         ]);
         $notification = ['message'=>'new channel has been created','alert-type'=>'success'];
-        return redirect()->back()->with($notification);  
+        return redirect()->back()->with($notification);
     }
 
     public function show(Channel $channel)
@@ -47,7 +47,7 @@ class ChannelController extends Controller
          $this->validate($request,['title'=>'required']);
 
          $channel->title = $request->title;
-         $channel->user_id = \Auth::user()->id;
+         /*$channel->user_id = \Auth::user()->id; esto servía para saber quien edito el titulo de la asignatura*/
          $channel->save();
 
          $notification = ['message'=>'channel updated ','alert-type'=>'success'];
@@ -58,6 +58,6 @@ class ChannelController extends Controller
     {
         $channel->delete();
         $notification = ['message'=>'channel has been deleted','alert-type'=>'success'];
-        return redirect()->back()->with($notification);  
+        return redirect()->back()->with($notification);
     }
 }

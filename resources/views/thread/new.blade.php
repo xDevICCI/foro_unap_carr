@@ -13,7 +13,7 @@
                   <div class="row">
 
                       <div class="col-md-6">
-                        <div class="form-group"><input type="text" class="form-control" placeholder="title" name="title"></div>
+                        <div class="form-group"><input type="text" class="form-control" placeholder="Título" name="title"></div>
                     </div>
 
                     <div class="col-md-6">
@@ -26,10 +26,11 @@
                         </div>
                     </div>
 
+
                       <div class="col-md-12">
                           <textarea name="content"  class="form-control __editor" id="" cols="30" rows="10"></textarea>
                       </div>
-                      <button class="btn btn-danger mt-3 ml-3" type="submit">submit</button>
+                      <button class="btn btn-danger mt-3 ml-3" type="submit">Enviar</button>
                 </div>
                    {{ Form::close() }}
                </div>

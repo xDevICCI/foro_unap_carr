@@ -11,24 +11,24 @@
 
 
                             <div class="col-sm-12 col-lg-4 col-md-3 shadow-lg text-center bg-success pt-5 pb-5 text-white mb-3 ">
-                                <h4>Channels : </h4>
+                                <h4>Asignaturas : </h4>
                                 <h1>{{ App\Channel::all()->count() }}</h1>
                             </div>
 
                             <div class="col-sm-12 col-lg-4 ml-1 col-md-3 shadow-lg text-center bg-warning pt-5 pb-5 mb-3">
-                                <h4>Threads : </h4>
+                                <h4>Temas : </h4>
                                 <h1>{{ App\Thread::all()->count() }}</h1>
                             </div>
 
                             @if(Auth::user()->role)
 
                             <div class="col-sm-12 col-lg-4 col-md-3 shadow-lg text-center bg-info pt-5 pb-5 text-white  mb-3 ">
-                                <h4>Users : </h4>
+                                <h4>Usuarios : </h4>
                                 <h1>{{ App\User::all()->count() }}</h1>
                             </div>
 
                             <div class="col-sm-12 col-lg-4 ml-1 col-md-3 shadow-lg text-center bg-danger pt-5 pb-5 text-white mb-3 ">
-                                <h4>Replies : </h4>
+                                <h4>Likes : </h4>
                                 <h1>{{ App\Reply::all()->count() }}</h1>
                             </div>
 @endif

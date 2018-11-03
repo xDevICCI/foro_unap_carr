@@ -16,7 +16,7 @@
             </div>
     </div>
     <div class="col-sm-4">
-    <button  class="btn btn-outline-danger" type="submit">update</button>
+    <button  class="btn btn-outline-danger" type="submit">Actualizar</button>
     </div>
     </div>
     </form>
@@ -30,6 +30,3 @@
 </div>
 </div>
 @endsection
-
-
-

@@ -1,7 +1,7 @@
 <?php
 
 
-Auth::routes();
+Auth::routes(['verify' => true]);
 Route::get('/','DashController@index_forum');
 
 
@@ -54,4 +54,3 @@ Route::delete('/delete/reply/{reply}',['as'=>'delete_reply','uses'=>'ReplyContro
 // Watch / unwatch
 // Route::post('/thread/{thread}/watch/',['as'=>'watch_thread','uses'=>'WatcherController@store']);
 // Route::delete('/thread/{thread}/unwatch/',['as'=>'unwatch_thread','uses'=>'WatcherController@unwatch']);
-

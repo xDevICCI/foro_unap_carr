@@ -11,7 +11,7 @@
     <link href='https://fonts.googleapis.com/css?family=Quicksand:300,400,700' rel="stylesheet">
     <!-- <![endif]-->
 
-    <title>Material Design for Bootstrap</title>
+    <title>FORO ICCI</title>
 
     <style type="text/css">
         body {

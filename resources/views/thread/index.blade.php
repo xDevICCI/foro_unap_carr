@@ -9,11 +9,11 @@
         <table class="table">
         <thead>
         <tr>
-        <th scope="col">title</th>
-        <th scope="col">channel</th>
-                <th scope="col">edit</th>
-                <th scope="col">view</th>
-                <th scope="col">Delete</th>
+        <th scope="col">Titulo</th>
+        <th scope="col">Asignatura</th>
+                <th scope="col">Editar</th>
+                <th scope="col">Ver</th>
+                <th scope="col">Borrar</th>
 
         </tr>
         </thead>
@@ -23,22 +23,22 @@
         <td>{{ $thread->title }}</td>
 
         <td>{{ $thread->channel->title }}</td>
-        
-                <td> 
+
+                <td>
                                 @if(Auth::id() == $thread->user_id || Auth::user()->role)
 
-                        <a href="{{ route('edit_thread',$thread->id) }}" class="btn btn-outline-success btn-sm">edit</a>
+                        <a href="{{ route('edit_thread',$thread->id) }}" class="btn btn-outline-success btn-sm">editar</a>
                         @endif
 
                 </td>
-                <td> <a href="{{ route('show_thread_id',$thread->slug) }}" class="btn btn-outline-primary btn-sm">show</a></td>
+                <td> <a href="{{ route('show_thread_id',$thread->slug) }}" class="btn btn-outline-primary btn-sm">mostrar</a></td>
         <td>
     @if(Auth::id() == $thread->user_id || Auth::user()->role)
         <form action="{{ route('delete_thread',$thread->id) }}" method="post">
         @csrf
         @method('delete')
         <button type="submit"
-                onclick="return confirm('Are you sure you want to delete ? ');" class="btn btn-outline-danger btn-sm">
+                onclick="return confirm('Estás seguro que quieres eliminar ? ');" class="btn btn-outline-danger btn-sm">
             <i class="fas fa-minus-circle"></i>
             trash
         </button>
@@ -63,8 +63,3 @@
         </div>
         </div>
         @endsection
-
-
-
-
-

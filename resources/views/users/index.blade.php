@@ -9,11 +9,11 @@
                     <table class="table">
                         <thead>
                         <tr>
-                            <th scope="col">Name</th>
-                            <th scope="col">email</th>
-                            <th scope="col">Role</th>
-                            <th scope="col">action</th>
-                            <th scope="col">Delete</th>
+                            <th scope="col">Nombre</th>
+                            <th scope="col">Correo</th>
+                            <th scope="col">Tipo de Usuario</th>
+                            <th scope="col">Acciones</th>
+                            <th scope="col">Eliminar</th>
 
                         </tr>
                         </thead>
@@ -25,9 +25,9 @@
                             <td>@if($user->role == false )subscriber @else admin @endif</td>
                             <td>
                                 @if($user->role == true )
-                                    <a href="{{ route('make_subsc',$user->id) }}" class="badge badge-dark">make subscriber</a>
+                                    <a href="{{ route('make_subsc',$user->id) }}" class="badge badge-dark">hacer Estudiante</a>
                                 @else
-                                    <a href="{{ route('make_admin',$user->id) }}" class="badge badge-primary">make admin</a>
+                                    <a href="{{ route('make_admin',$user->id) }}" class="badge badge-primary">Hacer Administrador</a>
                                 @endif
 
                             </td>
@@ -36,7 +36,7 @@
                                 <form action="{{ route('delete_user',$user->id) }}" method="post">
                                     @csrf
                                     @method('delete')
-                                    <button type="submit" onclick="return confirm('Are you sure you want to delete ? ');" class="btn btn-outline-danger btn-sm"><i class="fas fa-minus-circle"></i>
+                                    <button type="submit" onclick="return confirm('Estas seguro de eliminar ? ');" class="btn btn-outline-danger btn-sm"><i class="fas fa-minus-circle"></i>
                                          trash
                                     </button>
                                 </form>
@@ -58,8 +58,3 @@
         </div>
     </div>
 @endsection
-
-
-
-
-

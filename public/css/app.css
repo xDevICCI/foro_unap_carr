@@ -5,6 +5,307 @@
  * Licensed under MIT (https://github.com/twbs/bootstrap/blob/master/LICENSE)
  */
 
+
+ .context-dark, .bg-gray-dark, .bg-primary {
+     color: rgba(255, 255, 255, 0.8);
+ }
+
+ .footer-classic a, .footer-classic a:focus, .footer-classic a:active {
+     color: #ffffff;
+ }
+ .nav-list li {
+     padding-top: 5px;
+     padding-bottom: 5px;
+ }
+
+ .nav-list li a:hover:before {
+     margin-left: 0;
+     opacity: 1;
+     visibility: visible;
+ }
+
+ ul, ol {
+     list-style: none;
+     padding: 0;
+     margin: 0;
+ }
+
+ .social-inner {
+     display: flex;
+     flex-direction: column;
+     align-items: center;
+     width: 100%;
+     padding: 23px;
+     font: 900 13px/1 "Lato", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+     text-transform: uppercase;
+     color: rgba(255, 255, 255, 0.5);
+ }
+ .social-container .col {
+     border: 1px solid rgba(255, 255, 255, 0.1);
+ }
+ .nav-list li a:before {
+     content: "\f14f";
+     font: 400 21px/1 "Material Design Icons";
+     color: #4d6de6;
+     display: inline-block;
+     vertical-align: baseline;
+     margin-left: -28px;
+     margin-right: 7px;
+     opacity: 0;
+     visibility: hidden;
+     transition: .22s ease;
+ }
+
+ #sidebar-wrapper {
+  top: 52px;
+  left: -200px;
+  width: 200px;
+  color: #000000;
+  position: fixed;
+  height: 100%;
+  z-index: 1;
+}
+.sidebar-nav {
+  position: absolute;
+  top: 0;
+  margin: 0;
+  padding: 0;
+  width: 250px;
+  list-style: none;
+}
+.sidebar-nav li {
+  text-indent: 20px;
+  line-height: 50px;
+}
+.sidebar-nav li a {
+  color:  	#000000;
+  display: block;
+  text-decoration: none;
+}
+.sidebar-nav li a:hover {
+  background: rgba(255,255,255,0.25);
+  color: white;
+  text-decoration: none;
+}
+.sidebar-nav li a:active, .sidebar-nav li a:focus {
+  text-decoration: none;
+}
+#sidebar-wrapper.sidebar-toggle {
+  transition: all 0.3s ease-out;
+  margin-left: -200px;
+}
+@media (min-width: 768px) {
+  #sidebar-wrapper.sidebar-toggle {
+    transition: 0s;
+    left: 200px;
+  }
+}
+
+
+
+.mini-submenu{
+  display:none;
+  background-color: rgba(0, 0, 0, 0);
+  border: 1px solid rgba(0, 0, 0, 0.9);
+  border-radius: 4px;
+  padding: 9px;
+  /*position: relative;*/
+  width: 42px;
+
+}
+
+.mini-submenu:hover{
+  cursor: pointer;
+}
+
+.mini-submenu .icon-bar {
+  border-radius: 1px;
+  display: block;
+  height: 2px;
+  width: 22px;
+  margin-top: 3px;
+}
+
+.mini-submenu .icon-bar {
+  background-color: #000;
+}
+
+#slide-submenu{
+  background: rgba(0, 0, 0, 0.45);
+  display: inline-block;
+  padding: 0 8px;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+
+body#LoginForm{ background-image:url("https://hdwallsource.com/img/2014/9/blur-26347-27038-hd-wallpapers.jpg"); background-repeat:no-repeat; background-position:center; background-size:cover; padding:10px;}
+
+.form-heading { color:#fff; font-size:23px;}
+.panel h2{ color:#444444; font-size:18px; margin:0 0 8px 0;}
+.panel p { color:#777777; font-size:14px; margin-bottom:30px; line-height:24px;}
+.login-form .form-control {
+  background: #f7f7f7 none repeat scroll 0 0;
+  border: 1px solid #d4d4d4;
+  border-radius: 4px;
+  font-size: 14px;
+  height: 50px;
+  line-height: 50px;
+}
+.main-div {
+  background: #ffffff none repeat scroll 0 0;
+  border-radius: 2px;
+  margin: 10px auto 30px;
+  max-width: 38%;
+  padding: 50px 70px 70px 71px;
+}
+
+.login-form .form-group {
+  margin-bottom:10px;
+}
+.login-form{ text-align:center;}
+.forgot a {
+  color: #777777;
+  font-size: 14px;
+  text-decoration: underline;
+}
+.login-form  .btn.btn-primary {
+  background: #f0ad4e none repeat scroll 0 0;
+  border-color: #f0ad4e;
+  color: #ffffff;
+  font-size: 14px;
+  width: 100%;
+  height: 50px;
+  line-height: 50px;
+  padding: 0;
+}
+.forgot {
+  text-align: left; margin-bottom:30px;
+}
+.botto-text {
+  color: #ffffff;
+  font-size: 14px;
+  margin: auto;
+}
+.login-form .btn.btn-primary.reset {
+  background: #ff9900 none repeat scroll 0 0;
+}
+.back { text-align: left; margin-top:10px;}
+.back a {color: #444444; font-size: 13px;text-decoration: none;}
+
+
+.btn-hot {
+color: #fff;
+background-color: #db5566;
+border-bottom:2px solid #af4451;
+}
+
+.btn-hot:hover, .btn-sky.active:focus, .btn-hot:focus, .open>.dropdown-toggle.btn-hot {
+color: #fff;
+background-color: #df6a78;
+border-bottom:2px solid #b25560;
+outline: none;}
+
+
+.btn-hot:active, .btn-hot.active {
+color: #fff;
+background-color: #c04b59;
+border-top:2px solid #9a3c47;
+margin-top: 2px;
+}
+
+.btn-sunny {
+color: #fff;
+background-color: #f4ad49;
+border-bottom:2px solid #c38a3a;
+}
+
+.btn-sunny:hover, .btn-sky.active:focus, .btn-sunny:focus, .open>.dropdown-toggle.btn-sunny {
+color: #fff;
+background-color: #f5b75f;
+border-bottom:2px solid #c4924c;
+outline: none;
+}
+
+
+.btn-sunny:active, .btn-sunny.active {
+color: #fff;
+background-color: #d69840;
+border-top:2px solid #ab7a33;
+margin-top: 2px;
+}
+
+.btn-fresh {
+color: #fff;
+background-color: #51bf87;
+border-bottom:2px solid #41996c;
+}
+
+.btn-fresh:hover, .btn-sky.active:focus, .btn-fresh:focus, .open>.dropdown-toggle.btn-fresh {
+color: #fff;
+background-color: #66c796;
+border-bottom:2px solid #529f78;
+outline: none;
+}
+
+
+.btn-fresh:active, .btn-fresh.active {
+color: #fff;
+background-color: #47a877;
+border-top:2px solid #39865f;
+outline: none;
+outline-offset: none;
+margin-top: 2px;
+}
+
+.btn-sky {
+color: #fff;
+background-color: #0bacd3;
+border-bottom:2px solid #098aa9;
+}
+
+.btn-sky:hover,.btn-sky.active:focus, .btn-sky:focus, .open>.dropdown-toggle.btn-sky {
+color: #fff;
+background-color: #29b6d8;
+border-bottom:2px solid #2192ad;
+outline: none;
+}
+
+.btn-sky:active, .btn-sky.active {
+color: #fff;
+background-color: #0a97b9;
+border-top:2px solid #087994;
+outline-offset: none;
+margin-top: 2px;
+}
+
+.btn:focus,
+.btn:active:focus,
+.btn.active:focus {
+ outline: none;
+ outline-offset: 0px;
+}
+
+.derecha_form{
+  position:relative;
+  left:500px;
+}
+
+.img-user{
+    width:350px;
+    height:200px;
+}
+
+.jumbotron label {
+    font-size:12px;
+}
+
+.reg-icon{
+    color:#5bc0de;
+    font-weight:bold;
+    background-image: url("css/header-v2_2.jpg");
+}
+
 :root {
   --blue: #007bff;
   --indigo: #6610f2;
@@ -64,8 +365,12 @@ footer,
 header,
 hgroup,
 main,
-nav,
 section {
+  display: block;
+}
+
+nav{
+
   display: block;
 }
 
@@ -78,6 +383,7 @@ body {
   color: #212529;
   text-align: left;
   background-color: #f5f8fa;
+  background-image: url('http://uribe.inf.unap.cl/~web-icci/wordpress/wp-content/uploads/2016/09/greyTexture.png');
 }
 
 [tabindex="-1"]:focus {
@@ -455,6 +761,7 @@ h6,
   line-height: 1.2;
 }
 
+
 hr {
   margin-top: 1rem;
   margin-bottom: 1rem;
@@ -584,14 +891,17 @@ pre code {
 .container {
   width: 100%;
   padding-right: 15px;
+  padding-bottom: 15px;
   padding-left: 15px;
   margin-right: auto;
   margin-left: auto;
+  background-image: url(public/css/logo_unap.jpg);
 }
 
 @media (min-width: 576px) {
   .container {
     max-width: 540px;
+    background-image: url(public/css/logo_unap.jpg);
   }
 }
 
@@ -4471,6 +4781,7 @@ input[type="button"].btn-block {
   padding-left: 0;
   margin-bottom: 0;
   list-style: none;
+
 }
 
 .nav-link {
@@ -5596,7 +5907,7 @@ input[type="button"].btn-block {
 .jumbotron {
   padding: 2rem 1rem;
   margin-bottom: 2rem;
-  background-color: #e9ecef;
+  background-color: #ADD8E6;
   border-radius: 0.3rem;
 }
 
@@ -10423,11 +10734,10 @@ body {
 
 a {
   text-decoration: none;
-  color: #e86f6f;
+  color: black;
 }
 
 a:hover {
   color: #30abe6;
   text-decoration: none;
 }
-

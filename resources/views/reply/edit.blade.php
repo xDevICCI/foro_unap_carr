@@ -14,14 +14,14 @@
                     <div class="card-body">
                         <textarea name="content" class="form-control" id="reply" cols="30" rows="10">{{ $reply->content }}</textarea>
                         <button class="btn btn-info mt-4" type="submit">update</button>
-                        <a href="{{ route('show_thread_id',$reply->thread->slug) }}" class="btn btn-outline-warning mt-4 ml-2">back</a>
+                        <a href="{{ route('show_thread_id',$reply->thread->slug) }}" class="btn btn-outline-warning mt-4 ml-2">Volver</a>
                     </div>
                     </form>
                     <form action="{{ route('delete_reply',$reply->id) }}" method="post" style="margin: 34px">
                         @csrf
                         @method('delete')
 
-                        <button type="submit" class="btn btn-outline-danger mt-4  mb-5 btn-block">delete</button>
+                        <button type="submit" class="btn btn-outline-danger mt-4  mb-5 btn-block">Borrar</button>
 
                     </form>
 
